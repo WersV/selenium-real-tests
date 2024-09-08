@@ -1,6 +1,7 @@
 package com.seleniumdemo.tests;
 
 import com.seleniumdemo.pages.HomePage;
+import com.seleniumdemo.pages.MyAccPage;
 import org.testng.annotations.Test;
 
 public class RegisterTest extends BaseTest {
@@ -10,5 +11,10 @@ public class RegisterTest extends BaseTest {
         driver.get("http://seleniumdemo.com/");
         HomePage registerPage = new HomePage(driver);
         registerPage.enterRegistrationPage();
+
+        MyAccPage myAccPage = new MyAccPage(driver);
+        myAccPage.enterEmail();
+        myAccPage.enterPassword();
+        myAccPage.clickRegisterBtn();
     }
 }
