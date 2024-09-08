@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class DriverFactory {
 
-    public WebDriver getDriver(String driverName) {
+    public static WebDriver getDriver(String driverName) {
 
         WebDriver driver = null;
 
