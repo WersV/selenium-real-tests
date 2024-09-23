@@ -1,15 +1,11 @@
 package com.seleniumdemo.pages;
 
 import com.seleniumdemo.utils.SeleniumHelper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MyAccPage {
 
@@ -21,6 +17,9 @@ public class MyAccPage {
 
     @FindBy(xpath = "//button[@name='register']")
     private WebElement registerBtn;
+
+    @FindBy(xpath = "//a[text()='Dashboard']")
+    private WebElement dashboardLink;
 
     WebDriver driver = null;
 
@@ -40,9 +39,12 @@ public class MyAccPage {
     }
 
     public void clickRegisterBtn() {
-//        registerBtn.click();
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click()", registerBtn);
+    }
+
+    public WebElement getDashboardLink() {
+        return dashboardLink;
     }
 
 }
