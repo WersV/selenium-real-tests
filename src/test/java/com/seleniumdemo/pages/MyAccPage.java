@@ -21,6 +21,9 @@ public class MyAccPage {
     @FindBy(xpath = "//a[text()='Dashboard']")
     private WebElement dashboardLink;
 
+    @FindBy(xpath = "//ul[@class='woocommerce-error']//li[text()=' An account is already registered with your email address. Please log in.\t\t']")
+    private WebElement redundantEmailError;
+
     WebDriver driver = null;
 
     public MyAccPage(WebDriver driver) {
@@ -28,6 +31,9 @@ public class MyAccPage {
         this.driver = driver;
     }
 
+    public WebElement getEmail() {
+        return email;
+    }
 
     public void enterEmail() {
         int emailSeed = SeleniumHelper.generateSeedForEmail();
@@ -45,6 +51,10 @@ public class MyAccPage {
 
     public WebElement getDashboardLink() {
         return dashboardLink;
+    }
+
+    public WebElement getRedundantEmailError() {
+        return redundantEmailError;
     }
 
 }
