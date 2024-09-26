@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class MyAccPage {
 
     @FindBy(id = "reg_email")
-    private WebElement emailEl;
+    private WebElement regEmailEl;
 
     @FindBy(id = "reg_password")
     private WebElement password;
@@ -24,6 +24,15 @@ public class MyAccPage {
     @FindBy(xpath = "//ul[@class='woocommerce-error']//li[text()=' An account is already registered with your email address. Please log in.\t\t']")
     private WebElement redundantEmailError;
 
+    @FindBy(id = "username")
+    private WebElement logEmailEl;
+
+    @FindBy(id = "password")
+    private WebElement logPassword;
+
+    @FindBy(xpath = "//button[text()='Log in']")
+    private WebElement logInBtn;
+
     WebDriver driver = null;
 
     public MyAccPage(WebDriver driver) {
@@ -31,20 +40,20 @@ public class MyAccPage {
         this.driver = driver;
     }
 
-    public WebElement getEmailEl() {
-        return emailEl;
+    public WebElement getRegEmailEl() {
+        return regEmailEl;
     }
 
-    public void enterEmail() {
+    public void enterRegEmail() {
         int emailSeed = SeleniumHelper.generateSeedForEmail();
-        emailEl.sendKeys(emailSeed+"@test.com");
+        regEmailEl.sendKeys(emailSeed+"@test.com");
     }
 
-    public void enterEmail(String email) {
-        emailEl.sendKeys(email);
+    public void enterRegEmail(String email) {
+        regEmailEl.sendKeys(email);
     }
 
-    public void enterPassword() {
+    public void enterRegPassword() {
         password.sendKeys("SecretPassword1!");
     }
 
@@ -61,4 +70,15 @@ public class MyAccPage {
         return redundantEmailError;
     }
 
+    //logging in
+    public void enterLogEmail(String email) {
+        logEmailEl.sendKeys(email);
+    }
+    public void enterLogPassword(String password) {
+        logPassword.sendKeys(password);
+    }
+
+    public void clickLogInBtn() {
+        logInBtn.click();
+    }
 }

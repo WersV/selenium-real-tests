@@ -15,8 +15,8 @@ public class RegisterTest extends BaseTest {
         registerPage.enterRegistrationPage();
 
         MyAccPage myAccPage = new MyAccPage(driver);
-        myAccPage.enterEmail();
-        myAccPage.enterPassword();
+        myAccPage.enterRegEmail();
+        myAccPage.enterRegPassword();
 
         myAccPage.clickRegisterBtn();
 
@@ -30,10 +30,22 @@ public class RegisterTest extends BaseTest {
         registerPage.enterRegistrationPage();
 
         MyAccPage myAccPage = new MyAccPage(driver);
-        myAccPage.enterEmail("test@test.pl");
-        myAccPage.enterPassword();
+        myAccPage.enterRegEmail("test@test.pl");
+        myAccPage.enterRegPassword();
         myAccPage.clickRegisterBtn();
         WebElement errorEl = myAccPage.getRedundantEmailError();
         Assert.assertEquals(errorEl.getText(), "Error: An account is already registered with your email address. Please log in.");
+    }
+
+    @Test
+    public void logInUser() {
+        driver.get("http://seleniumdemo.com/");
+        HomePage registerPage = new HomePage(driver);
+        registerPage.enterRegistrationPage();
+
+        MyAccPage myAccPage = new MyAccPage(driver);
+        myAccPage.enterLogEmail("test@test.pl");
+        myAccPage.enterLogPassword("SecretPassword1!");
+        myAccPage.clickLogInBtn();
     }
 }
