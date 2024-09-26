@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class MyAccPage {
 
     @FindBy(id = "reg_email")
-    private WebElement email;
+    private WebElement emailEl;
 
     @FindBy(id = "reg_password")
     private WebElement password;
@@ -31,13 +31,17 @@ public class MyAccPage {
         this.driver = driver;
     }
 
-    public WebElement getEmail() {
-        return email;
+    public WebElement getEmailEl() {
+        return emailEl;
     }
 
     public void enterEmail() {
         int emailSeed = SeleniumHelper.generateSeedForEmail();
-        email.sendKeys(emailSeed+"@test.com");
+        emailEl.sendKeys(emailSeed+"@test.com");
+    }
+
+    public void enterEmail(String email) {
+        emailEl.sendKeys(email);
     }
 
     public void enterPassword() {

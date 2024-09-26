@@ -30,8 +30,7 @@ public class RegisterTest extends BaseTest {
         registerPage.enterRegistrationPage();
 
         MyAccPage myAccPage = new MyAccPage(driver);
-        WebElement email = myAccPage.getEmail();
-        email.sendKeys("test@test.pl");
+        myAccPage.enterEmail("test@test.pl");
         myAccPage.enterPassword();
         myAccPage.clickRegisterBtn();
         WebElement errorEl = myAccPage.getRedundantEmailError();
