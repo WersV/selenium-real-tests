@@ -36,16 +36,4 @@ public class RegisterTest extends BaseTest {
         WebElement errorEl = myAccPage.getRedundantEmailError();
         Assert.assertEquals(errorEl.getText(), "Error: An account is already registered with your email address. Please log in.");
     }
-
-    @Test
-    public void logInUser() {
-        driver.get("http://seleniumdemo.com/");
-        HomePage registerPage = new HomePage(driver);
-        registerPage.enterRegistrationPage();
-
-        MyAccPage myAccPage = new MyAccPage(driver);
-        myAccPage.enterLogEmail("test@test.pl");
-        myAccPage.enterLogPassword("SecretPassword1!");
-        myAccPage.clickLogInBtn();
-    }
 }

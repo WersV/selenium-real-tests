@@ -33,6 +33,9 @@ public class MyAccPage {
     @FindBy(xpath = "//button[text()='Log in']")
     private WebElement logInBtn;
 
+    @FindBy(xpath = "//li[text()=': Incorrect username or password.']")
+    private WebElement logInErrorMsgEl;
+
     WebDriver driver = null;
 
     public MyAccPage(WebDriver driver) {
@@ -80,5 +83,9 @@ public class MyAccPage {
 
     public void clickLogInBtn() {
         logInBtn.click();
+    }
+
+    public WebElement getLogInErrorMsgEl() {
+        return logInErrorMsgEl;
     }
 }
