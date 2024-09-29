@@ -11,6 +11,9 @@ public class HomePage {
     @FindBy(xpath = "//span[@class='nav__title' and text()='My account']")
     private List<WebElement> myAccLink;
 
+    @FindBy(xpath = "//span[@class='nav__title' and text()='Shop']")
+    private List<WebElement> ShopBtn;
+
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -19,4 +22,7 @@ public class HomePage {
         myAccLink.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
     }
 
+    public void clickShopBtn() {
+        ShopBtn.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
+    }
 }
