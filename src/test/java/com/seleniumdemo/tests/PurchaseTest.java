@@ -3,6 +3,7 @@ package com.seleniumdemo.tests;
 import com.seleniumdemo.pages.HomePage;
 import com.seleniumdemo.pages.ProductDetailsPage;
 import com.seleniumdemo.pages.ShopPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class PurchaseTest extends BaseTest {
@@ -17,8 +18,10 @@ public class PurchaseTest extends BaseTest {
         home.clickShopBtn();
         shop.chooseProduct("Java Selenium WebDriver");
         product.addToCartBtnClick();
-
-
+        String productAddSuccessText =  product.divEl().getText();
+        Assert.assertTrue(productAddSuccessText.contains("“Java Selenium WebDriver” has been added to your cart."));
+        product.viewCartBtnClick();
+        product.proceedToCheckoutBtnClick();
     }
 
 }
