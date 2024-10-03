@@ -1,5 +1,6 @@
 package com.seleniumdemo.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,8 +26,11 @@ public class OrderDetailsPage {
     @FindBy(xpath = "//ul[@id='select2-billing_country-results']//li")
     private List<WebElement> countryComboBoxResults;
 
+    private final WebDriver driver;
+
     public OrderDetailsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     public void fillFirstNameInput(String firstName) {
@@ -34,10 +38,12 @@ public class OrderDetailsPage {
     }
 
     public void fillLastNameInput(String lastName) {
-        firstNameInput.sendKeys(lastName);
+        lastNameInput.sendKeys(lastName);
     }
 
     public void chooseCountry(String countryName) {
+//        JavascriptExecutor executor = (JavascriptExecutor) driver;
+//        executor.executeScript("arguments[0].click();", countryComboBox);
         countryComboBox.click();
         countryComboBoxInput.sendKeys(countryName);
         countryComboBoxResults.stream().filter(el -> el.isDisplayed()).filter(el -> Objects.equals(el.getText(), countryName)).findFirst().ifPresent(el -> el.click());
