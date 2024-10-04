@@ -18,7 +18,7 @@ public class PurchaseTest extends BaseTest {
         OrderDetailsPage order = new OrderDetailsPage(driver);
 
         home.clickShopBtn();
-        shop.chooseProduct("Java Selenium WebDriver");
+        shop.openProduct("Java Selenium WebDriver");
         product.addToCartBtnClick();
         String productAddSuccessText =  product.divEl().getText();
         Assert.assertTrue(productAddSuccessText.contains("“Java Selenium WebDriver” has been added to your cart."));
