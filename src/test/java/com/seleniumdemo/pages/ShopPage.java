@@ -17,6 +17,8 @@ public class ShopPage {
         PageFactory.initElements(driver, this);
     }
 
+
+
     public void chooseProduct(String productName) {
         if(Objects.equals(productName, "Java Selenium WebDriver")) {
             javaSeleniumWebDriverProduct.click();

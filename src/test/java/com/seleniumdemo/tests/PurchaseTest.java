@@ -4,10 +4,6 @@ import com.seleniumdemo.pages.HomePage;
 import com.seleniumdemo.pages.OrderDetailsPage;
 import com.seleniumdemo.pages.ProductDetailsPage;
 import com.seleniumdemo.pages.ShopPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,9 +24,16 @@ public class PurchaseTest extends BaseTest {
         Assert.assertTrue(productAddSuccessText.contains("“Java Selenium WebDriver” has been added to your cart."));
         product.viewCartBtnClick();
         product.proceedToCheckoutBtnClick();
+
         order.fillFirstNameInput("TestName");
         order.fillLastNameInput("TestLastName");
-        order.chooseCountry("United States (US)");
+        order.chooseCountry("Finland");
+        order.fillAddress("ul. Puławska 41/23");
+        order.fillZipCode("20-341");
+        order.fillCity("Lublin");
+        order.fillPhoneNum("123456789");
+        order.fillEmail("asd@dsa.pl");
+        order.placeOrder();
     }
 
 }

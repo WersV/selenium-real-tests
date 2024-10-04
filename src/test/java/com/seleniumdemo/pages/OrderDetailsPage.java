@@ -1,6 +1,5 @@
 package com.seleniumdemo.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,6 +25,24 @@ public class OrderDetailsPage {
     @FindBy(xpath = "//ul[@id='select2-billing_country-results']//li")
     private List<WebElement> countryComboBoxResults;
 
+    @FindBy(id = "billing_address_1")
+    private WebElement addressInput;
+
+    @FindBy(id = "billing_postcode")
+    private WebElement zipCodeInput;
+
+    @FindBy(id = "billing_city")
+    private WebElement cityInput;
+
+    @FindBy(id = "billing_phone")
+    private WebElement phoneInput;
+
+    @FindBy(id = "billing_email")
+    private WebElement emailInput;
+
+    @FindBy(id = "place_order")
+    private WebElement orderBtn;
+
     private final WebDriver driver;
 
     public OrderDetailsPage(WebDriver driver) {
@@ -42,10 +59,32 @@ public class OrderDetailsPage {
     }
 
     public void chooseCountry(String countryName) {
-//        JavascriptExecutor executor = (JavascriptExecutor) driver;
-//        executor.executeScript("arguments[0].click();", countryComboBox);
         countryComboBox.click();
         countryComboBoxInput.sendKeys(countryName);
         countryComboBoxResults.stream().filter(el -> el.isDisplayed()).filter(el -> Objects.equals(el.getText(), countryName)).findFirst().ifPresent(el -> el.click());
+    }
+
+    public void fillAddress(String address) {
+        addressInput.sendKeys(address);
+    }
+
+    public void fillZipCode(String zipCode) {
+        zipCodeInput.sendKeys(zipCode);
+    }
+
+    public void fillCity(String city) {
+        cityInput.sendKeys(city);
+    }
+
+    public void fillPhoneNum(String phoneNum) {
+        phoneInput.sendKeys(phoneNum);
+    }
+
+    public void fillEmail(String email) {
+        emailInput.sendKeys(email);
+    }
+
+    public void placeOrder() {
+        orderBtn.click();
     }
 }
