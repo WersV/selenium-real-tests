@@ -1,5 +1,6 @@
 package com.seleniumdemo.tests;
 
+import com.seleniumdemo.models.Customer;
 import com.seleniumdemo.pages.HomePage;
 import com.seleniumdemo.pages.OrderDetailsPage;
 import com.seleniumdemo.pages.ProductDetailsPage;
@@ -25,15 +26,27 @@ public class PurchaseTest extends BaseTest {
         product.viewCartBtnClick();
         product.proceedToCheckoutBtnClick();
 
-        order.fillFirstNameInput("TestName");
-        order.fillLastNameInput("TestLastName");
-        order.chooseCountry("Finland");
-        order.fillAddress("ul. Puławska 41/23");
-        order.fillZipCode("20-341");
-        order.fillCity("Lublin");
-        order.fillPhoneNum("123456789");
-        order.fillEmail("asd@dsa.pl");
-        order.placeOrder();
+        Customer customer = new Customer();
+//        customer.setFirstName("TestName");
+//        customer.setLastName("TestLastName");
+//        customer.setCountry("Finland");
+//        customer.setAddress("ul. Puławska 41/23");
+//        customer.setZipCode("20-341");
+//        customer.setCity("Lublin");
+//        customer.setPhoneNum("123456789");
+//        customer.setEmail("asd@dsa.pl");
+
+        order.fillAddressDetails(customer);
+
+//        order.fillFirstNameInput("TestName");
+//        order.fillLastNameInput("TestLastName");
+//        order.chooseCountry("Finland");
+//        order.fillAddress("ul. Puławska 41/23");
+//        order.fillZipCode("20-341");
+//        order.fillCity("Lublin");
+//        order.fillPhoneNum("123456789");
+//        order.fillEmail("asd@dsa.pl");
+//        order.placeOrder();
     }
 
 }
