@@ -1,6 +1,7 @@
 package com.seleniumdemo.pages;
 
 import com.seleniumdemo.models.Customer;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,7 @@ public class OrderDetailsPage {
         cityInput.sendKeys(customer.getCity());
         phoneInput.sendKeys(customer.getPhoneNum());
         emailInput.sendKeys(customer.getEmail());
-        orderBtn.click();
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", orderBtn);
     }
 }
