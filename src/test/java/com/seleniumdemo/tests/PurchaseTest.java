@@ -11,23 +11,23 @@ public class PurchaseTest extends BaseTest {
     @Test
     public void purchaseProductTest() throws InterruptedException {
         driver.get("http://seleniumdemo.com/");
-        HomePage home = new HomePage(driver);
-        ShopPage shop = new ShopPage(driver);
-        ProductDetailsPage product = new ProductDetailsPage(driver);
-        OrderDetailsPage order = new OrderDetailsPage(driver);
-        OrderPlacedPage orderPlaced = new OrderPlacedPage(driver);
 
-        home.clickShopBtn();
-        shop.openProduct("Java Selenium WebDriver");
-        product.addToCartBtnClick();
-        String productAddSuccessText =  product.divEl().getText();
+        String productAddSuccessText = new HomePage(driver)
+        .clickShopBtn()
+        .openProduct("Java Selenium WebDriver")
+        .addToCartBtnClick()
+        .divEl().getText();
+
         Assert.assertTrue(productAddSuccessText.contains("“Java Selenium WebDriver” has been added to your cart."));
-        product.viewCartBtnClick();
-        product.proceedToCheckoutBtnClick();
 
         Customer customer = new Customer();
-        order.fillAddressDetails(customer);
 
+        new ProductDetailsPage(driver)
+        .viewCartBtnClick()
+        .proceedToCheckoutBtnClick()
+        .fillAddressDetails(customer);
+
+        OrderPlacedPage orderPlaced = new OrderPlacedPage(driver);
         WebElement orderReceivedMsg = orderPlaced.getOrderReceivedMsg();
         Assert.assertEquals(orderReceivedMsg.getText(), "Thank you. Your order has been received.");
 

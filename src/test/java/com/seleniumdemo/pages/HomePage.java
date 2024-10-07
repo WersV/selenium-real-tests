@@ -26,7 +26,8 @@ public class HomePage {
         return new MyAccPage(driver);
     }
 
-    public void clickShopBtn() {
+    public ShopPage clickShopBtn() {
         ShopBtn.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
+        return new ShopPage(driver);
     }
 }

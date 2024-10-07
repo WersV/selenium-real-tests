@@ -27,21 +27,24 @@ public class ProductDetailsPage {
         this.driver = driver;
     }
 
-    public void addToCartBtnClick() {
+    public ProductDetailsPage addToCartBtnClick() {
         addToCartBtn.click();
+        return this;
     }
 
     public WebElement divEl() {
         return productAddedTextDiv;
     }
 
-    public void viewCartBtnClick() {
+    public ProductDetailsPage viewCartBtnClick() {
         viewCartBtn.click();
+        return this;
     }
 
-    public void proceedToCheckoutBtnClick() throws InterruptedException {
+    public OrderDetailsPage proceedToCheckoutBtnClick() throws InterruptedException {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", proceedToCheckoutBtn);
+        return new OrderDetailsPage(driver);
     }
 
 }

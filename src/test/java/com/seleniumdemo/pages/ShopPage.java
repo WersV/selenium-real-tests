@@ -18,7 +18,8 @@ public class ShopPage {
         this.driver = driver;
     }
 
-    public void openProduct(String productName) {
+    public ProductDetailsPage openProduct(String productName) {
         driver.findElement(By.xpath("//h2[text()='"+productName+"']")).click();
+        return new ProductDetailsPage(driver);
     }
 }
