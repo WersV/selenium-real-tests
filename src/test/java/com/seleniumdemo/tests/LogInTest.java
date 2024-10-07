@@ -25,10 +25,10 @@ public class LogInTest extends BaseTest {
         HomePage registerPage = new HomePage(driver);
         registerPage.enterRegistrationPage();
 
-        MyAccPage myAccPage = new MyAccPage(driver);
-        myAccPage.enterLogEmail("342342test@test.pl");
-        myAccPage.enterLogPassword("SecretPassword1!");
-        myAccPage.clickLogInBtn();
+        MyAccPage myAccPage = new MyAccPage(driver)
+        .enterLogEmail("342342test@test.pl")
+        .enterLogPassword("SecretPassword1!")
+        .clickLogInBtn();
         String errorMsg = myAccPage.getLogInErrorMsgEl().getText();
         Assert.assertTrue(errorMsg.contains("Incorrect username or password."));
     }
