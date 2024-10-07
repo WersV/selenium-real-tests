@@ -1,10 +1,8 @@
 package com.seleniumdemo.tests;
 
 import com.seleniumdemo.models.Customer;
-import com.seleniumdemo.pages.HomePage;
-import com.seleniumdemo.pages.OrderDetailsPage;
-import com.seleniumdemo.pages.ProductDetailsPage;
-import com.seleniumdemo.pages.ShopPage;
+import com.seleniumdemo.pages.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,6 +15,7 @@ public class PurchaseTest extends BaseTest {
         ShopPage shop = new ShopPage(driver);
         ProductDetailsPage product = new ProductDetailsPage(driver);
         OrderDetailsPage order = new OrderDetailsPage(driver);
+        OrderPlacedPage orderPlaced = new OrderPlacedPage(driver);
 
         home.clickShopBtn();
         shop.openProduct("Java Selenium WebDriver");
@@ -28,6 +27,11 @@ public class PurchaseTest extends BaseTest {
 
         Customer customer = new Customer();
         order.fillAddressDetails(customer);
-    }
 
+        WebElement orderReceivedMsg = orderPlaced.getOrderReceivedMsg();
+        Assert.assertEquals(orderReceivedMsg.getText(), "Thank you. Your order has been received.");
+
+        WebElement orderProductName = orderPlaced.getProductName();
+        Assert.assertEquals(orderProductName.getText(), "Java Selenium WebDriver");
+    }
 }
