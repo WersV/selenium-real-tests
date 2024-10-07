@@ -14,9 +14,9 @@ public class LogInTest extends BaseTest {
         registerPage.enterRegistrationPage();
 
         MyAccPage myAccPage = new MyAccPage(driver);
-        myAccPage.enterLogEmail("test@test.pl");
-        myAccPage.enterLogPassword("SecretPassword1!");
-        myAccPage.clickLogInBtn();
+        myAccPage.enterLogEmail("test@test.pl")
+        .enterLogPassword("SecretPassword1!")
+        .clickLogInBtn();
     }
 
     @Test

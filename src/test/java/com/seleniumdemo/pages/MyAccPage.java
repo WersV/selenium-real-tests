@@ -74,15 +74,18 @@ public class MyAccPage {
     }
 
     //logging in
-    public void enterLogEmail(String email) {
+    public MyAccPage enterLogEmail(String email) {
         logEmailEl.sendKeys(email);
+        return this;
     }
-    public void enterLogPassword(String password) {
+    public MyAccPage enterLogPassword(String password) {
         logPassword.sendKeys(password);
+        return this;
     }
 
-    public void clickLogInBtn() {
+    public MyAccPage clickLogInBtn() {
         logInBtn.click();
+        return this;
     }
 
     public WebElement getLogInErrorMsgEl() {
