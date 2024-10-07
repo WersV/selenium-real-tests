@@ -14,12 +14,16 @@ public class HomePage {
     @FindBy(xpath = "//span[@class='nav__title' and text()='Shop']")
     private List<WebElement> ShopBtn;
 
+    private final WebDriver driver;
+
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    public void enterRegistrationPage() {
+    public MyAccPage enterRegistrationPage() {
         myAccLink.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
+        return new MyAccPage(driver);
     }
 
     public void clickShopBtn() {

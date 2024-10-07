@@ -11,8 +11,8 @@ public class RegisterTest extends BaseTest {
     @Test
     public void registerUserTest() {
         driver.get("http://seleniumdemo.com/");
-        HomePage registerPage = new HomePage(driver);
-        registerPage.enterRegistrationPage();
+        new HomePage(driver)
+        .enterRegistrationPage();
 
         MyAccPage myAccPage = new MyAccPage(driver);
         myAccPage.enterRegEmail();
