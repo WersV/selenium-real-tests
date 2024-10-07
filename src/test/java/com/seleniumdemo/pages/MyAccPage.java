@@ -47,22 +47,26 @@ public class MyAccPage {
         return regEmailEl;
     }
 
-    public void enterRegEmail() {
+    public MyAccPage enterRegEmail() {
         int emailSeed = SeleniumHelper.generateSeedForEmail();
         regEmailEl.sendKeys(emailSeed+"@test.com");
+        return this;
     }
 
-    public void enterRegEmail(String email) {
+    public MyAccPage enterRegEmail(String email) {
         regEmailEl.sendKeys(email);
+        return this;
     }
 
-    public void enterRegPassword() {
+    public MyAccPage enterRegPassword() {
         password.sendKeys("SecretPassword1!");
+        return this;
     }
 
-    public void clickRegisterBtn() {
+    public MyAccPage clickRegisterBtn() {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click()", registerBtn);
+        return this;
     }
 
     public WebElement getDashboardLink() {
