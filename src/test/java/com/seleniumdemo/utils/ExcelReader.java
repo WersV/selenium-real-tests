@@ -32,18 +32,18 @@ public class ExcelReader {
             for (int j = 0; j < columnCount; j++) {
                 Cell cell = row.getCell(j);
 
-                // Check the cell type and read accordingly
-                if (cell.getCellType() == CellType.STRING) {
-                    data[i - 1][j] = cell.getStringCellValue();
-                } else if (cell.getCellType() == CellType.NUMERIC) {
-                    // If it's numeric, we convert it to String for consistency
-                    data[i - 1][j] = String.valueOf(cell.getNumericCellValue());
-                } else if (cell.getCellType() == CellType.BOOLEAN) {
-                    data[i - 1][j] = String.valueOf(cell.getBooleanCellValue());
-                } else if (cell.getCellType() == CellType.BLANK) {
-                    data[i - 1][j] = "";  // Handle blank cells
+                if (cell != null) {
+                    // Check the cell type and read accordingly
+                    if (cell.getCellType() == CellType.STRING) {
+                        data[i - 1][j] = cell.getStringCellValue();
+                    } else if (cell.getCellType() == CellType.NUMERIC) {
+                        // If it's numeric, we convert it to String for consistency
+                        data[i - 1][j] = (int) cell.getNumericCellValue();
+                    } else {
+                        data[i - 1][j] = cell.toString();  // Default case, just in case
+                    }
                 } else {
-                    data[i - 1][j] = cell.toString();  // Default case, just in case
+                    System.out.println("Cell is null");
                 }
             }
         }
@@ -54,6 +54,6 @@ public class ExcelReader {
     }
 
     public static void main(String[] args) throws IOException {
-        readExcel("testData.xlsx");
+        readExcel("logInData.xlsx");
     }
 }

@@ -1,18 +1,29 @@
 package com.seleniumdemo.tests;
 
 import com.seleniumdemo.pages.HomePage;
+import com.seleniumdemo.utils.ExcelReader;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class LogInTest extends BaseTest {
 
-    @Test
-    public void logInUser() {
+    @DataProvider
+    public Object[][] logInData() throws IOException {
+        return ExcelReader.readExcel("logInData.xlsx");
+    }
+
+    @Test(dataProvider = "logInData")
+    public void logInUser(String email, String password) {
+        System.out.println(email);
+        System.out.println(password);
         driver.get("http://seleniumdemo.com/");
         new HomePage(driver)
         .enterRegistrationPage()
-        .enterLogEmail("test@test.pl")
-        .enterLogPassword("SecretPassword1!")
+        .enterLogEmail(email)
+        .enterLogPassword(password)
         .clickLogInBtn();
     }
 
