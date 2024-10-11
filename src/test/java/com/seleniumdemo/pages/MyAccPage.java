@@ -63,6 +63,11 @@ public class MyAccPage {
         return this;
     }
 
+    public MyAccPage enterRegPassword(String password) {
+        this.password.sendKeys(password);
+        return this;
+    }
+
     public MyAccPage clickRegisterBtn() {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click()", registerBtn);

@@ -17,8 +17,6 @@ public class LogInTest extends BaseTest {
 
     @Test(dataProvider = "logInData")
     public void logInUser(String email, String password) {
-        System.out.println(email);
-        System.out.println(password);
         driver.get("http://seleniumdemo.com/");
         new HomePage(driver)
         .enterRegistrationPage()
