@@ -39,6 +39,7 @@ public class ExcelReader {
                     } else if (cell.getCellType() == CellType.NUMERIC) {
                         // If it's numeric, we convert it to String for consistency
                         data[i - 1][j] = (int) cell.getNumericCellValue();
+                        System.out.println((int) cell.getNumericCellValue());
                     } else {
                         data[i - 1][j] = cell.toString();  // Default case, just in case
                     }
@@ -54,6 +55,6 @@ public class ExcelReader {
     }
 
     public static void main(String[] args) throws IOException {
-        readExcel("logInData.xlsx");
+        readExcel("testData.xlsx");
     }
 }
