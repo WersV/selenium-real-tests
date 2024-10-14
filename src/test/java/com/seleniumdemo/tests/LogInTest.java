@@ -16,13 +16,23 @@ public class LogInTest extends BaseTest {
     }
 
     @Test(dataProvider = "logInData")
-    public void logInUser(String email, String password) {
+    public void logInUserWithDataProvider(String email, String password) {
         driver.get("http://seleniumdemo.com/");
         new HomePage(driver)
         .enterRegistrationPage()
         .enterLogEmail(email)
         .enterLogPassword(password)
         .clickLogInBtn();
+    }
+
+    @Test
+    public void logInUser() {
+        driver.get("http://seleniumdemo.com/");
+        new HomePage(driver)
+                .enterRegistrationPage()
+                .enterLogEmail("test@test.com")
+                .enterLogPassword("SecretPassword1!")
+                .clickLogInBtn();
     }
 
     @Test

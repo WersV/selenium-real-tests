@@ -16,7 +16,7 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test(dataProvider = "logInData")
-    public void registerUserTest(String email, String password) {
+    public void registerUserTestWithDataProvider(String email, String password) {
         driver.get("http://seleniumdemo.com/");
 
         String dashboardLinkText = new HomePage(driver)
@@ -25,6 +25,20 @@ public class RegisterTest extends BaseTest {
         .enterRegPassword(password)
         .clickRegisterBtn()
         .getDashboardLink().getText();
+
+        Assert.assertEquals(dashboardLinkText, "Dashboard");
+    }
+
+    @Test
+    public void registerUserTest() {
+        driver.get("http://seleniumdemo.com/");
+
+        String dashboardLinkText = new HomePage(driver)
+                .enterRegistrationPage()
+                .enterRegEmail("test@test.com")
+                .enterRegPassword("SecretPassword1!")
+                .clickRegisterBtn()
+                .getDashboardLink().getText();
 
         Assert.assertEquals(dashboardLinkText, "Dashboard");
     }
