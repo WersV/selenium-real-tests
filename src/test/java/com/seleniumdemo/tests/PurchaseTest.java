@@ -14,7 +14,7 @@ public class PurchaseTest extends BaseTest {
 
     @Test
     public void purchaseProductTest() throws InterruptedException {
-        test = extentReports.createTest("LogInTest");
+        test = extentReports.createTest("PurchaseTest");
         driver.get("http://seleniumdemo.com/");
 
         String productAddSuccessText = new HomePage(driver)
@@ -47,7 +47,7 @@ public class PurchaseTest extends BaseTest {
 
     @Test(dataProvider = "testData")
     public void purchaseProductTestWithDataProvider(String email, String passw, String firstName, String lastName, String companyName, String country, String address, int zipCode, String city, int phone, String orderNotes) throws InterruptedException {
-        test = extentReports.createTest("LogInTest");
+        test = extentReports.createTest("PurchaseTest");
         driver.get("http://seleniumdemo.com/");
 
         String productAddSuccessText = new HomePage(driver)

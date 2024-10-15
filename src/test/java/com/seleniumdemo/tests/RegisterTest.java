@@ -17,6 +17,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(dataProvider = "logInData")
     public void registerUserTestWithDataProvider(String email, String password) {
+        test = extentReports.createTest("RegisterTest");
         driver.get("http://seleniumdemo.com/");
 
         String dashboardLinkText = new HomePage(driver)
@@ -31,11 +32,12 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void registerUserTest() {
+        test = extentReports.createTest("RegisterTest");
         driver.get("http://seleniumdemo.com/");
 
         String dashboardLinkText = new HomePage(driver)
                 .enterRegistrationPage()
-                .enterRegEmail("test@test.com")
+                .enterRegEmail("test41241@test.com")
                 .enterRegPassword("SecretPassword1!")
                 .clickRegisterBtn()
                 .getDashboardLink().getText();
@@ -45,6 +47,7 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void failToRegisterWhenDataRedundant() {
+        test = extentReports.createTest("RegisterTest");
         driver.get("http://seleniumdemo.com/");
 
         String errorText = new HomePage(driver)
