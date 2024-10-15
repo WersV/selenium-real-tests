@@ -36,6 +36,9 @@ public class MyAccPage {
     @FindBy(xpath = "//li[text()=': Incorrect username or password.']")
     private WebElement logInErrorMsgEl;
 
+    @FindBy(xpath = "//div[@class='woocommerce-MyAccount-content']//p[1]")
+    private WebElement helloStatement;
+
     WebDriver driver = null;
 
     public MyAccPage(WebDriver driver) {
@@ -99,5 +102,9 @@ public class MyAccPage {
 
     public WebElement getLogInErrorMsgEl() {
         return logInErrorMsgEl;
+    }
+
+    public WebElement getHelloStatement() {
+        return helloStatement;
     }
 }

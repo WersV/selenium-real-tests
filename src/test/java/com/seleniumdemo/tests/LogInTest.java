@@ -1,9 +1,8 @@
 package com.seleniumdemo.tests;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.seleniumdemo.pages.HomePage;
 import com.seleniumdemo.utils.ExcelReader;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,29 +18,38 @@ public class LogInTest extends BaseTest {
 
     @Test(dataProvider = "logInData")
     public void logInUserWithDataProvider(String email, String password) {
+        test = extentReports.createTest("LogInTest");
         driver.get("http://seleniumdemo.com/");
-        new HomePage(driver)
+        WebElement statement = new HomePage(driver)
         .enterRegistrationPage()
         .enterLogEmail(email)
         .enterLogPassword(password)
-        .clickLogInBtn();
+        .clickLogInBtn()
+        .getHelloStatement();
+
+        int index = email.indexOf('@');
+        String emailTextBeforeAt = email.substring(0,index); //this is shown username after log in
+
+        Assert.assertTrue(statement.getText().contains("Hello "+emailTextBeforeAt));
     }
 
     @Test
     public void logInUser() {
-        ExtentTest test = extentReports.createTest("LogInTest");
+        test = extentReports.createTest("LogInTest");
         driver.get("http://seleniumdemo.com/");
-        new HomePage(driver)
+        WebElement statement = new HomePage(driver)
                 .enterRegistrationPage()
-                .enterLogEmail("tescv cx vx t@test.com")
+                .enterLogEmail("test@test.com")
                 .enterLogPassword("SecretPassword1!")
-                .clickLogInBtn();
-        test.log(Status.PASS, "Log in done");
+                .clickLogInBtn()
+                .getHelloStatement();
+
+        Assert.assertTrue(statement.getText().contains("Hello test"));
     }
 
     @Test
     public void logInInvalidUser() {
-        ExtentTest test = extentReports.createTest("LogInTest");
+        test = extentReports.createTest("LogInTest");
         driver.get("http://seleniumdemo.com/");
         String errorMsg = new HomePage(driver)
         .enterRegistrationPage()
@@ -49,7 +57,8 @@ public class LogInTest extends BaseTest {
         .enterLogPassword("SecretPassword1!")
         .clickLogInBtn()
         .getLogInErrorMsgEl().getText();
+
         Assert.assertTrue(errorMsg.contains("Incorrect username or password."));
-        test.log(Status.PASS, "Log in done");
+
     }
 }
