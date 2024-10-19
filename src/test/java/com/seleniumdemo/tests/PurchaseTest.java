@@ -1,7 +1,9 @@
 package com.seleniumdemo.tests;
 
 import com.seleniumdemo.models.Customer;
-import com.seleniumdemo.pages.*;
+import com.seleniumdemo.pages.HomePage;
+import com.seleniumdemo.pages.OrderPlacedPage;
+import com.seleniumdemo.pages.ProductDetailsPage;
 import com.seleniumdemo.utils.ExcelReader;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;

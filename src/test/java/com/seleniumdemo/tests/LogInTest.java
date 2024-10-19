@@ -39,7 +39,7 @@ public class LogInTest extends BaseTest {
         driver.get("http://seleniumdemo.com/");
         WebElement statement = new HomePage(driver)
                 .enterRegistrationPage()
-                .enterLogEmail("test@test.com")
+                .enterLogEmail("test4121@test.com")
                 .enterLogPassword("SecretPassword1!")
                 .clickLogInBtn()
                 .getHelloStatement();

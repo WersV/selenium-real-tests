@@ -37,7 +37,7 @@ public class RegisterTest extends BaseTest {
 
         String dashboardLinkText = new HomePage(driver)
                 .enterRegistrationPage()
-                .enterRegEmail("test41241@test.com")
+                .enterRegEmail("test4121@test.com")
                 .enterRegPassword("SecretPassword1!")
                 .clickRegisterBtn()
                 .getDashboardLink().getText();
@@ -52,7 +52,7 @@ public class RegisterTest extends BaseTest {
 
         String errorText = new HomePage(driver)
         .enterRegistrationPage()
-        .enterRegEmail("test@test.pl")
+        .enterRegEmail("test4121@test.pl")
         .enterRegPassword()
         .clickRegisterBtn()
         .getRedundantEmailError().getText();

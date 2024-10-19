@@ -5,7 +5,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.seleniumdemo.utils.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -51,6 +50,6 @@ public class BaseTest {
         } else if (result.getStatus() == ITestResult.SKIP) {
             test.skip("Test Skipped: " + result.getThrowable());
         }
-//        driver.quit();
+        driver.quit();
     }
 }
